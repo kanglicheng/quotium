@@ -1,0 +1,15 @@
+{% extends 'quotium/base.html' %}
+
+{% block content %}
+    <h1>Success!</h1>
+    <h4> Thank you for your submission</h4>
+       {% if price %}
+        {% if price == 'N/A' %}
+            <h3>Sorry no estimate available at this time. </h3>
+        {% else %}
+            <h5>Your monthly estimate is ${{ price }}.</h5>
+        {% endif %}
+    {% endif %}
+
+
+{% endblock %}

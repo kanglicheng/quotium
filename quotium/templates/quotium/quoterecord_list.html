@@ -1,0 +1,54 @@
+{% extends 'quotium/base.html' %}
+{% block extracss %}
+    <style>
+    .customized-table{
+        width: 125% !important;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="centerstage">
+
+
+
+    {% if user.is_authenticated %}
+        <table class="table table-striped customized-table" id="property_estimate">
+        <thead class="thead-light">
+        <tr style="font-size: small">
+            <th>Email</th>
+            <th>Monthly Rental Estimate</th>
+            <th>Property Address</th>
+            <th>Zip Code</th>
+            <th>Number of Bedrooms</th>
+            <th>Number of Bathrooms</th>
+            <th>Square Footage</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for quote in quoterecord_list %}
+            <tr>
+            <td>{{ quote.property_data.email }}</td>
+            <td>{{ quote.monthly_estimate }}</td>
+            <td> {{ quote.property_data.property_address }}</td>
+            <td> {{ quote.property_data.zip_code }}</td>
+            <td> {{ quote.property_data.number_bedrooms }}</td>
+            <td> {{ quote.property_data.number_bathrooms }}</td>
+            <td> {{ quote.property_data.square_footage }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+        </table>
+
+    {%  else %}
+        <h2> Welcome to Quotium </h2>
+        <p> You can get a quote on your property or visit the About Page to learn more</p>
+        <a href="{% url 'post_new' %}">Get a quote now!</a>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+

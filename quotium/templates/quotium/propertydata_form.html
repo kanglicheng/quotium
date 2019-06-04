@@ -1,0 +1,15 @@
+{% extends 'quotium/base.html' %}
+
+{% block content %}
+    <h1>Property Information</h1>
+
+    <form method="POST" class="post-form">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+{% endblock %}
+
+
