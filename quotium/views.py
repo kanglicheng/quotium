@@ -51,11 +51,10 @@ class CreateSubmissionView(CreateView):
             return render(self.request, 'quotium/success.html', {'price': price})
         except HTTPError as er:
             print('Error occurs when invoking API, due to %s' % er)
-            return HttpResponse("something went wrong here, please go back %s", er)
+            return HttpResponse("something went wrong here, please go back.")
         except Exception as er:
             print('Error occurs %s', er)
-            return HttpResponse("something went wrong here, please go back %s", er)
-        
+        return HttpResponse("something went wrong here, please go back.")
 
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
