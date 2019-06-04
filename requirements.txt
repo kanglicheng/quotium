@@ -2,7 +2,7 @@ certifi==2019.3.9
 chardet==3.0.4
 Django==2.2.1
 dj-database-url
-django_heroku
+django-heroku
 Faker==1.0.7
 gunicorn==19.9.0
 idna==2.8
