@@ -2,8 +2,8 @@ from django.test import TestCase
 
 
 from model_mommy import mommy
-from blog.models import PropertyData
-from blog.utils import post_property_data
+from quotium.models import PropertyData
+from quotium.utils import post_property_data
 
 
 class APITestCase(TestCase):
