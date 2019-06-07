@@ -45,9 +45,7 @@ class CreateSubmissionView(CreateView):
                 price = post_property_data(property_data)
                 QuoteRecord.objects.create(property_data=property_data,
                                            monthly_estimate=price)
-            # TODO: call api to get price
-            # TODO: save propertydata(fk) with price to ??
-            # TODO: render success template with context price
+  
             return render(self.request, 'quotium/success.html', {'price': price})
         except HTTPError as er:
             print('Error occurs when invoking API, due to %s' % er)
@@ -55,7 +53,7 @@ class CreateSubmissionView(CreateView):
         except Exception as er:
             print('Error occurs %s', er)
             return HttpResponse("something went wrong here, please go back %s", er)
-        
+
 
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
