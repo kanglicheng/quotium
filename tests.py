@@ -1,10 +1,26 @@
-from django.test import TestCase
-
+from django.test import SimpleTestCase, TestCase
+from django.http import HttpRequest
+from django.urls import reverse
+from quotium import views
 
 from model_mommy import mommy
 from quotium.models import PropertyData
 from quotium.utils import post_property_data
 
+
+class QuoteListViewTests(SimpleTestCase):
+    def test_home_page_status_code(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_by_name(self):
+        response = self.client.get(reverse('quote_list'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('quote_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'quotium/quoterecord_list.html', )
 
 class APITestCase(TestCase):
     def test_call_api_with_data(self):
