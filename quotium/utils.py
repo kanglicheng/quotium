@@ -1,4 +1,5 @@
 import json
+from django.core.serializers.json import DjangoJSONEncoder
 import requests
 
 from django.conf import settings
@@ -14,7 +15,7 @@ def post_property_data(property_data):
         'square_footage': property_data.square_footage
     }
     response = requests.post(settings.QUOTE_API_URL+"submit",
-                             data=json.dumps(request_data),
+                             data=json.dumps(request_data, cls=DjangoJSONEncoder),
                              headers={'content-type': 'application/json'})
     response.raise_for_status()
     return response.json()['estimate']
