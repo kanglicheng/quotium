@@ -8,3 +8,5 @@ Note: Need to be using python 3.7.x, it may work for 3.6.x but I have not tried 
 5) Make and apply migrations, python manage.py makemigrations, python manage.py migrate
 6) Start the development server, python manage.py runserver
 
+*Check out the admin view *
+login at the upper right corner, username: admin, pw: loftium123
