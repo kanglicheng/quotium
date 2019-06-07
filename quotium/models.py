@@ -18,8 +18,8 @@ class PropertyData(models.Model):
     email = models.EmailField(max_length=200)
     property_address = models.CharField(max_length=300)
     zip_code = models.CharField(validators=[validate_zipcode], max_length=5)
-    number_bedrooms = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
-    number_bathrooms = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
+    number_bedrooms = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)])
+    number_bathrooms = models.DecimalField(min_value=0, max_value=1000, decimal_places=1)
     square_footage = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10000000)])
 
 

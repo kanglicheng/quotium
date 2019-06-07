@@ -16,3 +16,6 @@ class SubmissionForm(forms.ModelForm):
             'number_bathrooms': _('Number of Bathrooms'),
             'square_footage': _('Square Footage'),
         }
+        widgets = {
+            'number_bathrooms': forms.NumberInput(attrs={'step':0.5}),
+        }
